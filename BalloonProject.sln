@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balloon.Server", "Balloon.Server\Balloon.Server.csproj", "{A0667BB2-B822-4651-AA82-284F35077D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balloon.DummyClient", "Balloon.DummyClient\Balloon.DummyClient.csproj", "{6766B71A-0EBF-4A88-8755-4FA67BA16AC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balloon.Shared", "Balloon.Shared\Balloon.Shared.csproj", "{1BBF6E4E-7887-45D6-9771-BE87F2FD0F17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0667BB2-B822-4651-AA82-284F35077D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0667BB2-B822-4651-AA82-284F35077D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0667BB2-B822-4651-AA82-284F35077D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0667BB2-B822-4651-AA82-284F35077D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6766B71A-0EBF-4A88-8755-4FA67BA16AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6766B71A-0EBF-4A88-8755-4FA67BA16AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6766B71A-0EBF-4A88-8755-4FA67BA16AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6766B71A-0EBF-4A88-8755-4FA67BA16AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BBF6E4E-7887-45D6-9771-BE87F2FD0F17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BBF6E4E-7887-45D6-9771-BE87F2FD0F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BBF6E4E-7887-45D6-9771-BE87F2FD0F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BBF6E4E-7887-45D6-9771-BE87F2FD0F17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

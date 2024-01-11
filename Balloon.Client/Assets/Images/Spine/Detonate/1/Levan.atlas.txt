@@ -1,0 +1,118 @@
+
+Levan.png
+size: 2024,1992
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+foni_00001
+  rotate: true
+  xy: 1062, 10
+  size: 227, 264
+  orig: 608, 556
+  offset: 173, 121
+  index: -1
+foni_00002
+  rotate: true
+  xy: 2, 2
+  size: 213, 269
+  orig: 608, 556
+  offset: 203, 116
+  index: -1
+foni_00003
+  rotate: true
+  xy: 1572, 809
+  size: 267, 302
+  orig: 608, 556
+  offset: 175, 114
+  index: -1
+foni_00004
+  rotate: false
+  xy: 1583, 189
+  size: 323, 315
+  orig: 608, 556
+  offset: 147, 112
+  index: -1
+foni_00005
+  rotate: true
+  xy: 1583, 506
+  size: 301, 351
+  orig: 608, 556
+  offset: 130, 106
+  index: -1
+foni_00006
+  rotate: true
+  xy: 1572, 1078
+  size: 422, 424
+  orig: 608, 556
+  offset: 80, 39
+  index: -1
+foni_00007
+  rotate: true
+  xy: 1557, 1502
+  size: 488, 465
+  orig: 608, 556
+  offset: 45, 25
+  index: -1
+foni_00008
+  rotate: true
+  xy: 1068, 1469
+  size: 521, 487
+  orig: 608, 556
+  offset: 33, 15
+  index: -1
+foni_00009
+  rotate: true
+  xy: 1063, 881
+  size: 546, 507
+  orig: 608, 556
+  offset: 25, 10
+  index: -1
+foni_00010
+  rotate: true
+  xy: 546, 1429
+  size: 561, 520
+  orig: 608, 556
+  offset: 24, 9
+  index: -1
+foni_00011
+  rotate: true
+  xy: 528, 226
+  size: 577, 532
+  orig: 608, 556
+  offset: 18, 6
+  index: -1
+foni_00012
+  rotate: true
+  xy: 2, 805
+  size: 587, 535
+  orig: 608, 556
+  offset: 13, 10
+  index: -1
+foni_00013
+  rotate: true
+  xy: 2, 1394
+  size: 596, 542
+  orig: 608, 556
+  offset: 8, 6
+  index: -1
+foni_00014
+  rotate: true
+  xy: 539, 807
+  size: 585, 522
+  orig: 608, 556
+  offset: 5, 4
+  index: -1
+foni_00015
+  rotate: true
+  xy: 2, 217
+  size: 586, 524
+  orig: 608, 556
+  offset: 6, 5
+  index: -1
+foni_00016
+  rotate: true
+  xy: 1062, 239
+  size: 566, 519
+  orig: 608, 556
+  offset: 10, 6
+  index: -1

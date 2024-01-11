@@ -1,0 +1,19 @@
+{
+    "name": "ChatApp.Shared",
+    "rootNamespace": "",
+    "references": [
+        "MessagePack",
+        "MagicOnion.Abstractions",
+        "MessagePack.UnityEditor",
+        "MessagePack.Annotations"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-examples", "spine-unity-examples.csproj", "{1f88bdea-b581-381c-7745-6f5a399f355b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity", "spine-unity.csproj", "{ae7ff6b7-c39d-1652-85db-7136bcd07007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{0b37521d-7c6f-9554-9470-dcc5033910a6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-editor", "spine-unity-editor.csproj", "{adf2bf01-6432-d8d7-1eba-adbec5778cc9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-examples-editor", "spine-unity-examples-editor.csproj", "{85bbf2d7-03c9-65d1-7997-1dafdf890c23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{35c5867e-addf-6d53-7442-e1720a58fa46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1f88bdea-b581-381c-7745-6f5a399f355b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1f88bdea-b581-381c-7745-6f5a399f355b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ae7ff6b7-c39d-1652-85db-7136bcd07007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ae7ff6b7-c39d-1652-85db-7136bcd07007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0b37521d-7c6f-9554-9470-dcc5033910a6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0b37521d-7c6f-9554-9470-dcc5033910a6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{adf2bf01-6432-d8d7-1eba-adbec5778cc9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{adf2bf01-6432-d8d7-1eba-adbec5778cc9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85bbf2d7-03c9-65d1-7997-1dafdf890c23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85bbf2d7-03c9-65d1-7997-1dafdf890c23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35c5867e-addf-6d53-7442-e1720a58fa46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35c5867e-addf-6d53-7442-e1720a58fa46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

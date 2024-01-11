@@ -1,0 +1,20 @@
+
+Levan.png
+size: 1617,806
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cloud
+  rotate: true
+  xy: 1284, 2
+  size: 802, 331
+  orig: 802, 331
+  offset: 0, 0
+  index: -1
+foni
+  rotate: true
+  xy: 2, 84
+  size: 720, 1280
+  orig: 720, 1280
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,265 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0263310b2e42d98be365d63f101d4b, type: 3}
+  m_Name: UserTable
+  m_EditorClassIdentifier: 
+  users:
+  - <UserId>k__BackingField: 316a36a4-0004-4cd6-8058-4e61ef65d70e
+    <Username>k__BackingField: DreamWeaver
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 10787.607421875
+  - <UserId>k__BackingField: b8657cfb-a4b6-465a-9c0f-29d21fbdb9dc
+    <Username>k__BackingField: StarShine
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 21014.802734375
+  - <UserId>k__BackingField: 01f07700-1e3a-40ef-b3f3-c8a408f0934c
+    <Username>k__BackingField: MysticMuse
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 23799.1171875
+  - <UserId>k__BackingField: c798b08c-89dc-4d76-8bc7-abf695f5d6c9
+    <Username>k__BackingField: OceanBreeze
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 19110.416015625
+  - <UserId>k__BackingField: 1793bfe3-c031-4ca4-85f6-a98b99b2e6ed
+    <Username>k__BackingField: LunarLight
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 14216.9482421875
+  - <UserId>k__BackingField: 37b6192d-2658-471d-9684-438db4dbf9c9
+    <Username>k__BackingField: SolarFlare
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 13387.1943359375
+  - <UserId>k__BackingField: 02f7c6b4-2e47-4fce-95eb-7a6060b40c9f
+    <Username>k__BackingField: TwilightSoul
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 6450.53125
+  - <UserId>k__BackingField: 7c681d5c-d2fb-4fd2-8312-75d904f45861
+    <Username>k__BackingField: EchoWhisper
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 16356.404296875
+  - <UserId>k__BackingField: ff7f7076-6741-4e58-b6bf-72301fbb7d6a
+    <Username>k__BackingField: SkyDancer
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 21012.103515625
+  - <UserId>k__BackingField: 091a760a-bb6d-48d8-9a26-f5aaa5fffab9
+    <Username>k__BackingField: ZenGarden
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 10895.291015625
+  - <UserId>k__BackingField: 8e0a9750-8089-4f53-9eb6-475d0a775f3f
+    <Username>k__BackingField: SunflowerRay
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 17851.76953125
+  - <UserId>k__BackingField: 80f4c1c2-1f13-466c-b8db-d076dc326575
+    <Username>k__BackingField: MoonlitPath
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 12966.5576171875
+  - <UserId>k__BackingField: c8449c41-89cf-4742-a5f1-59ca4910ed00
+    <Username>k__BackingField: FireHeart
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 18346.427734375
+  - <UserId>k__BackingField: 5cf90355-daf6-4e98-8431-d109f1d08f51
+    <Username>k__BackingField: WhisperWind
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 22950.646484375
+  - <UserId>k__BackingField: 0abfc623-bf1b-4b2c-947d-92970a6036de
+    <Username>k__BackingField: CelestialSage
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 23013.51953125
+  - <UserId>k__BackingField: fc51618f-d40c-400a-8a64-7fc268fb7d99
+    <Username>k__BackingField: NorthernLights
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 11975.71875
+  - <UserId>k__BackingField: 610aeaf3-86e9-4296-96af-0604c813adfd
+    <Username>k__BackingField: SerenitySeeker
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 17034.10546875
+  - <UserId>k__BackingField: 0007b5f6-ca6a-4e03-9f63-f228205b79fd
+    <Username>k__BackingField: CosmicDust
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 11129.587890625
+  - <UserId>k__BackingField: 08ad0692-4ef4-410d-917a-fd18ecec2e68
+    <Username>k__BackingField: PhoenixRise
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 16337.423828125
+  - <UserId>k__BackingField: 623b4bb6-0a5f-412d-a802-1f2c31f5a650
+    <Username>k__BackingField: SapphireDream
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 21724.330078125
+  - <UserId>k__BackingField: 051e5816-7c85-4328-9aa0-e7e14fdad427
+    <Username>k__BackingField: VintageRose
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 16815.51171875
+  - <UserId>k__BackingField: 448fbafd-b68c-4a8d-b649-279eaa097fae
+    <Username>k__BackingField: ForestNymph
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 11624.0390625
+  - <UserId>k__BackingField: 389c0fa6-6c92-4f35-905f-30060fb56018
+    <Username>k__BackingField: EternalVoyager
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 10567.9765625
+  - <UserId>k__BackingField: 87a61711-a2cb-4678-acfe-63d1b465447d
+    <Username>k__BackingField: MysticRiver
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 5409.3623046875
+  - <UserId>k__BackingField: 3e56b650-1b95-4fe2-b276-d3daeb92d344
+    <Username>k__BackingField: StarryKnight
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 22959.333984375
+  - <UserId>k__BackingField: 0e095061-b029-4e0d-9193-0827c75c5729
+    <Username>k__BackingField: WinterWolf
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 12122.8896484375
+  - <UserId>k__BackingField: a3dfb3ef-0ced-4593-b093-9b38bbb4cd0e
+    <Username>k__BackingField: SolarEclipse
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 14853.150390625
+  - <UserId>k__BackingField: 0875bc05-d56d-4c9e-94e5-112e107eed2f
+    <Username>k__BackingField: AutumnLeaf
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 21166.125
+  - <UserId>k__BackingField: 36728092-5514-4c81-bafb-015f71a90b35
+    <Username>k__BackingField: OceanVoyage
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 22889.31640625
+  - <UserId>k__BackingField: a40f5c98-b548-4535-a14a-40d966e42711
+    <Username>k__BackingField: ThunderSpirit
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 10834.048828125
+  - <UserId>k__BackingField: 1523ed9a-004a-413a-8d3a-abea630ef00e
+    <Username>k__BackingField: MountainMystic
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 9241.587890625
+  - <UserId>k__BackingField: f3fb21ff-ab93-48d3-94b1-8d083d3567c4
+    <Username>k__BackingField: DesertNomad
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 19785.087890625
+  - <UserId>k__BackingField: f0119114-d3cb-4433-8507-62d4a516a6dc
+    <Username>k__BackingField: RainbowMist
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 9948.5234375
+  - <UserId>k__BackingField: a67d921a-9856-4b3f-9cd3-35a4e51a6c18
+    <Username>k__BackingField: ArcticFlame
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 10299.650390625
+  - <UserId>k__BackingField: ff21e519-4a4f-4bb1-a0b3-3e5d89ad2197
+    <Username>k__BackingField: WildOrchid
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 13630.732421875
+  - <UserId>k__BackingField: db03699d-68b4-4a3d-aa77-50b4e3cdd90c
+    <Username>k__BackingField: ZenithStar
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 6805.0263671875
+  - <UserId>k__BackingField: d7457717-ab32-49a7-850f-25b6e0c8ad78
+    <Username>k__BackingField: AuroraWhisper
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 5029.3515625
+  - <UserId>k__BackingField: 2e50f8f5-f6ab-48c1-b25c-ee3499ef373a
+    <Username>k__BackingField: CrystalCave
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 20416.08984375
+  - <UserId>k__BackingField: 88e03d23-0171-4358-8c82-be8f9ab6a2bc
+    <Username>k__BackingField: ShadowPhoenix
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 13423.501953125
+  - <UserId>k__BackingField: e1f1a4ce-34b0-43cc-bd2e-47405fb26a79
+    <Username>k__BackingField: SilverSage
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 11383.169921875
+  - <UserId>k__BackingField: da06953e-6843-4b10-b208-58390416e3f9
+    <Username>k__BackingField: CoralReef
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 15133.0625
+  - <UserId>k__BackingField: 4b3bab08-278d-4212-8b5e-f1447018c6cf
+    <Username>k__BackingField: MysticMountain
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 6109.30419921875
+  - <UserId>k__BackingField: 36409f66-09d7-4fe0-af94-029321a0f2a0
+    <Username>k__BackingField: GoldenSunrise
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 11956.6025390625
+  - <UserId>k__BackingField: ca5ab9cb-6a79-4e14-8926-bab649213049
+    <Username>k__BackingField: ThunderHawk
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 8493.8740234375
+  - <UserId>k__BackingField: 1ab2a8b6-dc2f-43ba-b44a-9a0e92efdd5f
+    <Username>k__BackingField: StormChaser
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 22048.646484375
+  - <UserId>k__BackingField: cf7c82ae-cb73-435b-9fbb-16b68d40d9a9
+    <Username>k__BackingField: OceanDepth
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 9481.50390625
+  - <UserId>k__BackingField: c72da50b-04e2-44e9-88bf-0fb0f599ca0a
+    <Username>k__BackingField: SolarWind
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 11666.3271484375
+  - <UserId>k__BackingField: d4a72e51-03ad-4da3-9910-54984d1911c5
+    <Username>k__BackingField: MoonGlow
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 24441.39453125
+  - <UserId>k__BackingField: a4b1ab68-1f31-44b9-b23e-e32ea1069686
+    <Username>k__BackingField: StarryAbyss
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 21002.931640625
+  - <UserId>k__BackingField: 1966d6c9-a2d6-4574-9919-a726d0a3c50a
+    <Username>k__BackingField: NatureWhisper
+    <Password>k__BackingField: 123456
+    <Currency>k__BackingField: USD
+    <Balance>k__BackingField: 11612.552734375

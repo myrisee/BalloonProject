@@ -1,0 +1,13 @@
+
+gilaki.png
+size: 239,394
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tube
+  rotate: false
+  xy: 2, 2
+  size: 235, 390
+  orig: 235, 390
+  offset: 0, 0
+  index: -1
