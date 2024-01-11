@@ -1,0 +1,9 @@
+﻿Balloon.Client/Library
+Balloon.Client/Temp
+packages
+Balloon.Client/obj
+Balloon.Client/Logs
+Balloon.Client/UserSettings
+.idea
+bin
+obj
