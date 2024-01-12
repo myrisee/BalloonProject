@@ -14,9 +14,9 @@ public class JwtTokenService
         _securityKey = new SymmetricSecurityKey(Convert.FromBase64String(jwtTokenServiceOptions.Value.Secret));
     }
 
-    public (string Token, DateTime Expires) CreateToken(UserInfo userInfo)
+    public (string Token, DateTime Expires) CreateToken(UserViewModel userViewModel)
     {
-        return CreateToken(userInfo.UserId, userInfo.Username);
+        return CreateToken(userViewModel.Id.ToString(), userViewModel.Username);
     }
 
     public (string Token, DateTime Expires) CreateToken(string userId, string displayName)

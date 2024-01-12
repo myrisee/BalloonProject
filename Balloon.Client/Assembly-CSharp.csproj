@@ -43,20 +43,16 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Game\Explosion.cs" />
      <Compile Include="Assets\Scripts\Sound\PlaySoundEffect.cs" />
-     <Compile Include="Assets\Scripts\Services\DummyUserService.cs" />
      <Compile Include="Assets\Scripts\Generated\MessagePack.Generated.cs" />
-     <Compile Include="Assets\Scripts\Services\UserTable.cs" />
      <Compile Include="Assets\Scripts\UI\GameWindow.cs" />
      <Compile Include="Assets\Scripts\Generated\MagicOnion.Generated.cs" />
      <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Game\Balloon.cs" />
+     <Compile Include="Assets\Scripts\Services\WithAuthenticationFilter.cs" />
      <Compile Include="Assets\Scripts\SceneInstaller.cs" />
-     <Compile Include="Assets\Scripts\Services\DummyGameService.cs" />
-     <Compile Include="Assets\Scripts\Services\Interfaces\IUserService.cs" />
      <Compile Include="Assets\Scripts\InitialSettings.cs" />
      <Compile Include="Assets\Scripts\ProjectInstaller.cs" />
      <Compile Include="Assets\Scripts\Game\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Services\WithAuthenticationFilter.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\Images\Spine\Balloon\5\Levan.json" />
      <Folder Include="Assets\Spine" />
@@ -88,7 +84,6 @@
      <Folder Include="Assets\Images\Spine\Detonate\4" />
      <None Include="Assets\Images\Spine\Detonate\4\Levan.atlas.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-     <Folder Include="Assets\Scripts\Services\Interfaces" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <Folder Include="Assets\TextMesh Pro\Resources" />
      <Folder Include="Assets\Images\Spine\Win\Jackpot" />

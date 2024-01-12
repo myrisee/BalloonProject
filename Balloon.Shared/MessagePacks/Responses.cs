@@ -7,17 +7,16 @@ namespace Balloon.Shared.MessagePacks
     [MessagePackObject(true)]
     public class StartResponse
     {
-        public string TicketId { get; set; }
-        public GameInfo GameInfo { get; set; }
-        public UserInfo UserInfo { get; set; }
+        public bool Success { get; set; }
+        public GameViewModel GameViewModel { get; set; }
+        public UserViewModel UserViewModel { get; set; }
     }
     
     [MessagePackObject(true)]
     public class UpdateResponse
     {
-        public string TicketId { get; set; }
-        public GameInfo GameInfo { get; set; }
-        public UserInfo UserInfo { get; set; }
+        public GameViewModel Game { get; set; }
+        public UserViewModel User { get; set; }
         public bool IsWin { get; set; }
     }
 
@@ -35,13 +34,13 @@ namespace Balloon.Shared.MessagePacks
     {
         public string Token { get; set; }
         public DateTimeOffset  Expiration { get; set; }
-        public UserInfo UserInfo { get; set; }
+        public UserViewModel User { get; set; }
         
-        public SessionInfo(string token, DateTimeOffset expiration, UserInfo userInfo)
+        public SessionInfo(string token, DateTimeOffset expiration, UserViewModel user)
         {
             this.Token = token;
             this.Expiration = expiration;
-            this.UserInfo = userInfo;
+            this.User = user;
         }
 
         public SessionInfo()
@@ -51,7 +50,7 @@ namespace Balloon.Shared.MessagePacks
 
         public override string ToString()
         {
-            return $"{Token + Environment.NewLine} {Expiration + Environment.NewLine} {UserInfo}";
+            return $"{Token + Environment.NewLine} {Expiration + Environment.NewLine} {User}";
         }
     }
 }

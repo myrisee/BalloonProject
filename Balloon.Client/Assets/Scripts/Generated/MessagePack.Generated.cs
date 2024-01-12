@@ -49,9 +49,9 @@ namespace MessagePack.Resolvers
         {
             lookup = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(9)
             {
-                { typeof(global::Balloon.Shared.DataModels.GameStatus), 0 },
-                { typeof(global::Balloon.Shared.DataModels.GameInfo), 1 },
-                { typeof(global::Balloon.Shared.DataModels.UserInfo), 2 },
+                { typeof(global::Balloon.Shared.DataModels.GameState), 0 },
+                { typeof(global::Balloon.Shared.DataModels.GameViewModel), 1 },
+                { typeof(global::Balloon.Shared.DataModels.UserViewModel), 2 },
                 { typeof(global::Balloon.Shared.MessagePacks.LoginResponse), 3 },
                 { typeof(global::Balloon.Shared.MessagePacks.SessionInfo), 4 },
                 { typeof(global::Balloon.Shared.MessagePacks.StartRequest), 5 },
@@ -71,9 +71,9 @@ namespace MessagePack.Resolvers
 
             switch (key)
             {
-                case 0: return new MessagePack.Formatters.Balloon.Shared.DataModels.GameStatusFormatter();
-                case 1: return new MessagePack.Formatters.Balloon.Shared.DataModels.GameInfoFormatter();
-                case 2: return new MessagePack.Formatters.Balloon.Shared.DataModels.UserInfoFormatter();
+                case 0: return new MessagePack.Formatters.Balloon.Shared.DataModels.GameStateFormatter();
+                case 1: return new MessagePack.Formatters.Balloon.Shared.DataModels.GameViewModelFormatter();
+                case 2: return new MessagePack.Formatters.Balloon.Shared.DataModels.UserViewModelFormatter();
                 case 3: return new MessagePack.Formatters.Balloon.Shared.MessagePacks.LoginResponseFormatter();
                 case 4: return new MessagePack.Formatters.Balloon.Shared.MessagePacks.SessionInfoFormatter();
                 case 5: return new MessagePack.Formatters.Balloon.Shared.MessagePacks.StartRequestFormatter();
@@ -111,16 +111,16 @@ namespace MessagePack.Resolvers
 namespace MessagePack.Formatters.Balloon.Shared.DataModels
 {
 
-    public sealed class GameStatusFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Balloon.Shared.DataModels.GameStatus>
+    public sealed class GameStateFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Balloon.Shared.DataModels.GameState>
     {
-        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Balloon.Shared.DataModels.GameStatus value, global::MessagePack.MessagePackSerializerOptions options)
+        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Balloon.Shared.DataModels.GameState value, global::MessagePack.MessagePackSerializerOptions options)
         {
             writer.Write((global::System.Int32)value);
         }
 
-        public global::Balloon.Shared.DataModels.GameStatus Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        public global::Balloon.Shared.DataModels.GameState Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
         {
-            return (global::Balloon.Shared.DataModels.GameStatus)reader.ReadInt32();
+            return (global::Balloon.Shared.DataModels.GameState)reader.ReadInt32();
         }
     }
 }
@@ -153,12 +153,14 @@ namespace MessagePack.Formatters.Balloon.Shared.DataModels
 
 namespace MessagePack.Formatters.Balloon.Shared.DataModels
 {
-    public sealed class GameInfoFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Balloon.Shared.DataModels.GameInfo>
+    public sealed class GameViewModelFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Balloon.Shared.DataModels.GameViewModel>
     {
+        // TicketId
+        private static global::System.ReadOnlySpan<byte> GetSpan_TicketId() => new byte[1 + 8] { 168, 84, 105, 99, 107, 101, 116, 73, 100 };
         // UserId
         private static global::System.ReadOnlySpan<byte> GetSpan_UserId() => new byte[1 + 6] { 166, 85, 115, 101, 114, 73, 100 };
-        // GameStatus
-        private static global::System.ReadOnlySpan<byte> GetSpan_GameStatus() => new byte[1 + 10] { 170, 71, 97, 109, 101, 83, 116, 97, 116, 117, 115 };
+        // GameState
+        private static global::System.ReadOnlySpan<byte> GetSpan_GameState() => new byte[1 + 9] { 169, 71, 97, 109, 101, 83, 116, 97, 116, 101 };
         // StartTime
         private static global::System.ReadOnlySpan<byte> GetSpan_StartTime() => new byte[1 + 9] { 169, 83, 116, 97, 114, 116, 84, 105, 109, 101 };
         // CurrentWin
@@ -166,139 +168,7 @@ namespace MessagePack.Formatters.Balloon.Shared.DataModels
         // BetAmount
         private static global::System.ReadOnlySpan<byte> GetSpan_BetAmount() => new byte[1 + 9] { 169, 66, 101, 116, 65, 109, 111, 117, 110, 116 };
 
-        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Balloon.Shared.DataModels.GameInfo value, global::MessagePack.MessagePackSerializerOptions options)
-        {
-            if (value is null)
-            {
-                writer.WriteNil();
-                return;
-            }
-
-            var formatterResolver = options.Resolver;
-            writer.WriteMapHeader(5);
-            writer.WriteRaw(GetSpan_UserId());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.UserId, options);
-            writer.WriteRaw(GetSpan_GameStatus());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameStatus>(formatterResolver).Serialize(ref writer, value.GameStatus, options);
-            writer.WriteRaw(GetSpan_StartTime());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::System.DateTime>(formatterResolver).Serialize(ref writer, value.StartTime, options);
-            writer.WriteRaw(GetSpan_CurrentWin());
-            writer.Write(value.CurrentWin);
-            writer.WriteRaw(GetSpan_BetAmount());
-            writer.Write(value.BetAmount);
-        }
-
-        public global::Balloon.Shared.DataModels.GameInfo Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
-        {
-            if (reader.TryReadNil())
-            {
-                return null;
-            }
-
-            options.Security.DepthStep(ref reader);
-            var formatterResolver = options.Resolver;
-            var length = reader.ReadMapHeader();
-            var __UserId__ = default(string);
-            var __GameStatus__IsInitialized = false;
-            var __GameStatus__ = default(global::Balloon.Shared.DataModels.GameStatus);
-            var __StartTime__IsInitialized = false;
-            var __StartTime__ = default(global::System.DateTime);
-            var __CurrentWin__IsInitialized = false;
-            var __CurrentWin__ = default(double);
-            var __BetAmount__ = default(double);
-
-            for (int i = 0; i < length; i++)
-            {
-                var stringKey = global::MessagePack.Internal.CodeGenHelpers.ReadStringSpan(ref reader);
-                switch (stringKey.Length)
-                {
-                    default:
-                    FAIL:
-                      reader.Skip();
-                      continue;
-                    case 6:
-                        if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 110266614641493UL) { goto FAIL; }
-
-                        __UserId__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
-                        continue;
-                    case 10:
-                        switch (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey))
-                        {
-                            default: goto FAIL;
-                            case 8386111882673348935UL:
-                                if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 29557UL) { goto FAIL; }
-
-                                __GameStatus__IsInitialized = true;
-                                __GameStatus__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameStatus>(formatterResolver).Deserialize(ref reader, options);
-                                continue;
-
-                            case 6301783160589022531UL:
-                                if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 28265UL) { goto FAIL; }
-
-                                __CurrentWin__IsInitialized = true;
-                                __CurrentWin__ = reader.ReadDouble();
-                                continue;
-
-                        }
-                    case 9:
-                        switch (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey))
-                        {
-                            default: goto FAIL;
-                            case 7883925481800692819UL:
-                                if (stringKey[0] != 101) { goto FAIL; }
-
-                                __StartTime__IsInitialized = true;
-                                __StartTime__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::System.DateTime>(formatterResolver).Deserialize(ref reader, options);
-                                continue;
-
-                            case 7959390431487485250UL:
-                                if (stringKey[0] != 116) { goto FAIL; }
-
-                                __BetAmount__ = reader.ReadDouble();
-                                continue;
-
-                        }
-
-                }
-            }
-
-            var ____result = new global::Balloon.Shared.DataModels.GameInfo(__UserId__, __BetAmount__);
-            if (__GameStatus__IsInitialized)
-            {
-                ____result.GameStatus = __GameStatus__;
-            }
-
-            if (__StartTime__IsInitialized)
-            {
-                ____result.StartTime = __StartTime__;
-            }
-
-            if (__CurrentWin__IsInitialized)
-            {
-                ____result.CurrentWin = __CurrentWin__;
-            }
-
-            reader.Depth--;
-            return ____result;
-        }
-    }
-
-    public sealed class UserInfoFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Balloon.Shared.DataModels.UserInfo>
-    {
-        // UserId
-        private static global::System.ReadOnlySpan<byte> GetSpan_UserId() => new byte[1 + 6] { 166, 85, 115, 101, 114, 73, 100 };
-        // Username
-        private static global::System.ReadOnlySpan<byte> GetSpan_Username() => new byte[1 + 8] { 168, 85, 115, 101, 114, 110, 97, 109, 101 };
-        // Password
-        private static global::System.ReadOnlySpan<byte> GetSpan_Password() => new byte[1 + 8] { 168, 80, 97, 115, 115, 119, 111, 114, 100 };
-        // Currency
-        private static global::System.ReadOnlySpan<byte> GetSpan_Currency() => new byte[1 + 8] { 168, 67, 117, 114, 114, 101, 110, 99, 121 };
-        // Balance
-        private static global::System.ReadOnlySpan<byte> GetSpan_Balance() => new byte[1 + 7] { 167, 66, 97, 108, 97, 110, 99, 101 };
-        // Name
-        private static global::System.ReadOnlySpan<byte> GetSpan_Name() => new byte[1 + 4] { 164, 78, 97, 109, 101 };
-
-        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Balloon.Shared.DataModels.UserInfo value, global::MessagePack.MessagePackSerializerOptions options)
+        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Balloon.Shared.DataModels.GameViewModel value, global::MessagePack.MessagePackSerializerOptions options)
         {
             if (value is null)
             {
@@ -308,21 +178,21 @@ namespace MessagePack.Formatters.Balloon.Shared.DataModels
 
             var formatterResolver = options.Resolver;
             writer.WriteMapHeader(6);
+            writer.WriteRaw(GetSpan_TicketId());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.TicketId, options);
             writer.WriteRaw(GetSpan_UserId());
             global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.UserId, options);
-            writer.WriteRaw(GetSpan_Username());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.Username, options);
-            writer.WriteRaw(GetSpan_Password());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.Password, options);
-            writer.WriteRaw(GetSpan_Currency());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.Currency, options);
-            writer.WriteRaw(GetSpan_Balance());
-            writer.Write(value.Balance);
-            writer.WriteRaw(GetSpan_Name());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.Name, options);
+            writer.WriteRaw(GetSpan_GameState());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameState>(formatterResolver).Serialize(ref writer, value.GameState, options);
+            writer.WriteRaw(GetSpan_StartTime());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::System.DateTime>(formatterResolver).Serialize(ref writer, value.StartTime, options);
+            writer.WriteRaw(GetSpan_CurrentWin());
+            writer.Write(value.CurrentWin);
+            writer.WriteRaw(GetSpan_BetAmount());
+            writer.Write(value.BetAmount);
         }
 
-        public global::Balloon.Shared.DataModels.UserInfo Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        public global::Balloon.Shared.DataModels.GameViewModel Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
         {
             if (reader.TryReadNil())
             {
@@ -332,16 +202,7 @@ namespace MessagePack.Formatters.Balloon.Shared.DataModels
             options.Security.DepthStep(ref reader);
             var formatterResolver = options.Resolver;
             var length = reader.ReadMapHeader();
-            var __UserId__IsInitialized = false;
-            var __UserId__ = default(string);
-            var __Username__ = default(string);
-            var __Password__ = default(string);
-            var __Currency__IsInitialized = false;
-            var __Currency__ = default(string);
-            var __Balance__IsInitialized = false;
-            var __Balance__ = default(double);
-            var __Name__IsInitialized = false;
-            var __Name__ = default(string);
+            var ____result = new global::Balloon.Shared.DataModels.GameViewModel();
 
             for (int i = 0; i < length; i++)
             {
@@ -352,62 +213,128 @@ namespace MessagePack.Formatters.Balloon.Shared.DataModels
                     FAIL:
                       reader.Skip();
                       continue;
+                    case 8:
+                        if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 7226435056034867540UL) { goto FAIL; }
+
+                        ____result.TicketId = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
+                        continue;
                     case 6:
                         if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 110266614641493UL) { goto FAIL; }
 
-                        __UserId__IsInitialized = true;
-                        __UserId__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
+                        ____result.UserId = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
+                        continue;
+                    case 9:
+                        switch (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey))
+                        {
+                            default: goto FAIL;
+                            case 8386111882673348935UL:
+                                if (stringKey[0] != 101) { goto FAIL; }
+
+                                ____result.GameState = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameState>(formatterResolver).Deserialize(ref reader, options);
+                                continue;
+
+                            case 7883925481800692819UL:
+                                if (stringKey[0] != 101) { goto FAIL; }
+
+                                ____result.StartTime = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::System.DateTime>(formatterResolver).Deserialize(ref reader, options);
+                                continue;
+
+                            case 7959390431487485250UL:
+                                if (stringKey[0] != 116) { goto FAIL; }
+
+                                ____result.BetAmount = reader.ReadDouble();
+                                continue;
+
+                        }
+                    case 10:
+                        if (!global::System.MemoryExtensions.SequenceEqual(stringKey, GetSpan_CurrentWin().Slice(1))) { goto FAIL; }
+
+                        ____result.CurrentWin = reader.ReadDouble();
+                        continue;
+
+                }
+            }
+
+            reader.Depth--;
+            return ____result;
+        }
+    }
+
+    public sealed class UserViewModelFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Balloon.Shared.DataModels.UserViewModel>
+    {
+        // Id
+        private static global::System.ReadOnlySpan<byte> GetSpan_Id() => new byte[1 + 2] { 162, 73, 100 };
+        // Username
+        private static global::System.ReadOnlySpan<byte> GetSpan_Username() => new byte[1 + 8] { 168, 85, 115, 101, 114, 110, 97, 109, 101 };
+        // Currency
+        private static global::System.ReadOnlySpan<byte> GetSpan_Currency() => new byte[1 + 8] { 168, 67, 117, 114, 114, 101, 110, 99, 121 };
+        // Balance
+        private static global::System.ReadOnlySpan<byte> GetSpan_Balance() => new byte[1 + 7] { 167, 66, 97, 108, 97, 110, 99, 101 };
+
+        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Balloon.Shared.DataModels.UserViewModel value, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            if (value is null)
+            {
+                writer.WriteNil();
+                return;
+            }
+
+            var formatterResolver = options.Resolver;
+            writer.WriteMapHeader(4);
+            writer.WriteRaw(GetSpan_Id());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::System.Guid>(formatterResolver).Serialize(ref writer, value.Id, options);
+            writer.WriteRaw(GetSpan_Username());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.Username, options);
+            writer.WriteRaw(GetSpan_Currency());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.Currency, options);
+            writer.WriteRaw(GetSpan_Balance());
+            writer.Write(value.Balance);
+        }
+
+        public global::Balloon.Shared.DataModels.UserViewModel Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            if (reader.TryReadNil())
+            {
+                return null;
+            }
+
+            options.Security.DepthStep(ref reader);
+            var formatterResolver = options.Resolver;
+            var length = reader.ReadMapHeader();
+            var ____result = new global::Balloon.Shared.DataModels.UserViewModel();
+
+            for (int i = 0; i < length; i++)
+            {
+                var stringKey = global::MessagePack.Internal.CodeGenHelpers.ReadStringSpan(ref reader);
+                switch (stringKey.Length)
+                {
+                    default:
+                    FAIL:
+                      reader.Skip();
+                      continue;
+                    case 2:
+                        if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 25673UL) { goto FAIL; }
+
+                        ____result.Id = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::System.Guid>(formatterResolver).Deserialize(ref reader, options);
                         continue;
                     case 8:
                         switch (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey))
                         {
                             default: goto FAIL;
                             case 7308604897285731157UL:
-                                __Username__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
-                                continue;
-                            case 7237970109966541136UL:
-                                __Password__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
+                                ____result.Username = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
                                 continue;
                             case 8746956283274491203UL:
-                                __Currency__IsInitialized = true;
-                                __Currency__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
+                                ____result.Currency = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
                                 continue;
                         }
                     case 7:
                         if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 28538298379821378UL) { goto FAIL; }
 
-                        __Balance__IsInitialized = true;
-                        __Balance__ = reader.ReadDouble();
-                        continue;
-                    case 4:
-                        if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 1701667150UL) { goto FAIL; }
-
-                        __Name__IsInitialized = true;
-                        __Name__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
+                        ____result.Balance = reader.ReadDouble();
                         continue;
 
                 }
-            }
-
-            var ____result = new global::Balloon.Shared.DataModels.UserInfo(__Username__, __Password__);
-            if (__UserId__IsInitialized)
-            {
-                ____result.UserId = __UserId__;
-            }
-
-            if (__Currency__IsInitialized)
-            {
-                ____result.Currency = __Currency__;
-            }
-
-            if (__Balance__IsInitialized)
-            {
-                ____result.Balance = __Balance__;
-            }
-
-            if (__Name__IsInitialized)
-            {
-                ____result.Name = __Name__;
             }
 
             reader.Depth--;
@@ -533,8 +460,8 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
         private static global::System.ReadOnlySpan<byte> GetSpan_Token() => new byte[1 + 5] { 165, 84, 111, 107, 101, 110 };
         // Expiration
         private static global::System.ReadOnlySpan<byte> GetSpan_Expiration() => new byte[1 + 10] { 170, 69, 120, 112, 105, 114, 97, 116, 105, 111, 110 };
-        // UserInfo
-        private static global::System.ReadOnlySpan<byte> GetSpan_UserInfo() => new byte[1 + 8] { 168, 85, 115, 101, 114, 73, 110, 102, 111 };
+        // User
+        private static global::System.ReadOnlySpan<byte> GetSpan_User() => new byte[1 + 4] { 164, 85, 115, 101, 114 };
 
         public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Balloon.Shared.MessagePacks.SessionInfo value, global::MessagePack.MessagePackSerializerOptions options)
         {
@@ -550,8 +477,8 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
             global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.Token, options);
             writer.WriteRaw(GetSpan_Expiration());
             global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::System.DateTimeOffset>(formatterResolver).Serialize(ref writer, value.Expiration, options);
-            writer.WriteRaw(GetSpan_UserInfo());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserInfo>(formatterResolver).Serialize(ref writer, value.UserInfo, options);
+            writer.WriteRaw(GetSpan_User());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserViewModel>(formatterResolver).Serialize(ref writer, value.User, options);
         }
 
         public global::Balloon.Shared.MessagePacks.SessionInfo Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
@@ -566,7 +493,7 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
             var length = reader.ReadMapHeader();
             var __Token__ = default(string);
             var __Expiration__ = default(global::System.DateTimeOffset);
-            var __UserInfo__ = default(global::Balloon.Shared.DataModels.UserInfo);
+            var __User__ = default(global::Balloon.Shared.DataModels.UserViewModel);
 
             for (int i = 0; i < length; i++)
             {
@@ -587,16 +514,16 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
 
                         __Expiration__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::System.DateTimeOffset>(formatterResolver).Deserialize(ref reader, options);
                         continue;
-                    case 8:
-                        if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 8027224647565407061UL) { goto FAIL; }
+                    case 4:
+                        if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 1919251285UL) { goto FAIL; }
 
-                        __UserInfo__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserInfo>(formatterResolver).Deserialize(ref reader, options);
+                        __User__ = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserViewModel>(formatterResolver).Deserialize(ref reader, options);
                         continue;
 
                 }
             }
 
-            var ____result = new global::Balloon.Shared.MessagePacks.SessionInfo(__Token__, __Expiration__, __UserInfo__);
+            var ____result = new global::Balloon.Shared.MessagePacks.SessionInfo(__Token__, __Expiration__, __User__);
             reader.Depth--;
             return ____result;
         }
@@ -667,12 +594,12 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
 
     public sealed class StartResponseFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Balloon.Shared.MessagePacks.StartResponse>
     {
-        // TicketId
-        private static global::System.ReadOnlySpan<byte> GetSpan_TicketId() => new byte[1 + 8] { 168, 84, 105, 99, 107, 101, 116, 73, 100 };
-        // GameInfo
-        private static global::System.ReadOnlySpan<byte> GetSpan_GameInfo() => new byte[1 + 8] { 168, 71, 97, 109, 101, 73, 110, 102, 111 };
-        // UserInfo
-        private static global::System.ReadOnlySpan<byte> GetSpan_UserInfo() => new byte[1 + 8] { 168, 85, 115, 101, 114, 73, 110, 102, 111 };
+        // Success
+        private static global::System.ReadOnlySpan<byte> GetSpan_Success() => new byte[1 + 7] { 167, 83, 117, 99, 99, 101, 115, 115 };
+        // GameViewModel
+        private static global::System.ReadOnlySpan<byte> GetSpan_GameViewModel() => new byte[1 + 13] { 173, 71, 97, 109, 101, 86, 105, 101, 119, 77, 111, 100, 101, 108 };
+        // UserViewModel
+        private static global::System.ReadOnlySpan<byte> GetSpan_UserViewModel() => new byte[1 + 13] { 173, 85, 115, 101, 114, 86, 105, 101, 119, 77, 111, 100, 101, 108 };
 
         public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Balloon.Shared.MessagePacks.StartResponse value, global::MessagePack.MessagePackSerializerOptions options)
         {
@@ -684,12 +611,12 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
 
             var formatterResolver = options.Resolver;
             writer.WriteMapHeader(3);
-            writer.WriteRaw(GetSpan_TicketId());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.TicketId, options);
-            writer.WriteRaw(GetSpan_GameInfo());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameInfo>(formatterResolver).Serialize(ref writer, value.GameInfo, options);
-            writer.WriteRaw(GetSpan_UserInfo());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserInfo>(formatterResolver).Serialize(ref writer, value.UserInfo, options);
+            writer.WriteRaw(GetSpan_Success());
+            writer.Write(value.Success);
+            writer.WriteRaw(GetSpan_GameViewModel());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameViewModel>(formatterResolver).Serialize(ref writer, value.GameViewModel, options);
+            writer.WriteRaw(GetSpan_UserViewModel());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserViewModel>(formatterResolver).Serialize(ref writer, value.UserViewModel, options);
         }
 
         public global::Balloon.Shared.MessagePacks.StartResponse Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
@@ -713,19 +640,27 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
                     FAIL:
                       reader.Skip();
                       continue;
-                    case 8:
+                    case 7:
+                        if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 32496501618079059UL) { goto FAIL; }
+
+                        ____result.Success = reader.ReadBoolean();
+                        continue;
+                    case 13:
                         switch (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey))
                         {
                             default: goto FAIL;
-                            case 7226435056034867540UL:
-                                ____result.TicketId = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
+                            case 8603398482950971719UL:
+                                if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 465557548877UL) { goto FAIL; }
+
+                                ____result.GameViewModel = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameViewModel>(formatterResolver).Deserialize(ref reader, options);
                                 continue;
-                            case 8027224647347822919UL:
-                                ____result.GameInfo = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameInfo>(formatterResolver).Deserialize(ref reader, options);
+
+                            case 8603398483168555861UL:
+                                if (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey) != 465557548877UL) { goto FAIL; }
+
+                                ____result.UserViewModel = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserViewModel>(formatterResolver).Deserialize(ref reader, options);
                                 continue;
-                            case 8027224647565407061UL:
-                                ____result.UserInfo = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserInfo>(formatterResolver).Deserialize(ref reader, options);
-                                continue;
+
                         }
 
                 }
@@ -801,12 +736,10 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
 
     public sealed class UpdateResponseFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Balloon.Shared.MessagePacks.UpdateResponse>
     {
-        // TicketId
-        private static global::System.ReadOnlySpan<byte> GetSpan_TicketId() => new byte[1 + 8] { 168, 84, 105, 99, 107, 101, 116, 73, 100 };
-        // GameInfo
-        private static global::System.ReadOnlySpan<byte> GetSpan_GameInfo() => new byte[1 + 8] { 168, 71, 97, 109, 101, 73, 110, 102, 111 };
-        // UserInfo
-        private static global::System.ReadOnlySpan<byte> GetSpan_UserInfo() => new byte[1 + 8] { 168, 85, 115, 101, 114, 73, 110, 102, 111 };
+        // Game
+        private static global::System.ReadOnlySpan<byte> GetSpan_Game() => new byte[1 + 4] { 164, 71, 97, 109, 101 };
+        // User
+        private static global::System.ReadOnlySpan<byte> GetSpan_User() => new byte[1 + 4] { 164, 85, 115, 101, 114 };
         // IsWin
         private static global::System.ReadOnlySpan<byte> GetSpan_IsWin() => new byte[1 + 5] { 165, 73, 115, 87, 105, 110 };
 
@@ -819,13 +752,11 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
             }
 
             var formatterResolver = options.Resolver;
-            writer.WriteMapHeader(4);
-            writer.WriteRaw(GetSpan_TicketId());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.TicketId, options);
-            writer.WriteRaw(GetSpan_GameInfo());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameInfo>(formatterResolver).Serialize(ref writer, value.GameInfo, options);
-            writer.WriteRaw(GetSpan_UserInfo());
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserInfo>(formatterResolver).Serialize(ref writer, value.UserInfo, options);
+            writer.WriteMapHeader(3);
+            writer.WriteRaw(GetSpan_Game());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameViewModel>(formatterResolver).Serialize(ref writer, value.Game, options);
+            writer.WriteRaw(GetSpan_User());
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserViewModel>(formatterResolver).Serialize(ref writer, value.User, options);
             writer.WriteRaw(GetSpan_IsWin());
             writer.Write(value.IsWin);
         }
@@ -851,18 +782,15 @@ namespace MessagePack.Formatters.Balloon.Shared.MessagePacks
                     FAIL:
                       reader.Skip();
                       continue;
-                    case 8:
+                    case 4:
                         switch (global::MessagePack.Internal.AutomataKeyGen.GetKey(ref stringKey))
                         {
                             default: goto FAIL;
-                            case 7226435056034867540UL:
-                                ____result.TicketId = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
+                            case 1701667143UL:
+                                ____result.Game = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameViewModel>(formatterResolver).Deserialize(ref reader, options);
                                 continue;
-                            case 8027224647347822919UL:
-                                ____result.GameInfo = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.GameInfo>(formatterResolver).Deserialize(ref reader, options);
-                                continue;
-                            case 8027224647565407061UL:
-                                ____result.UserInfo = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserInfo>(formatterResolver).Deserialize(ref reader, options);
+                            case 1919251285UL:
+                                ____result.User = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Balloon.Shared.DataModels.UserViewModel>(formatterResolver).Deserialize(ref reader, options);
                                 continue;
                         }
                     case 5:

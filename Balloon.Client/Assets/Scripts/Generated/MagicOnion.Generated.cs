@@ -65,10 +65,6 @@ namespace MagicOnion
             {
                 object factory = default(global::MagicOnion.Client.MagicOnionClientFactoryDelegate<T>);
 
-                if (typeof(T) == typeof(global::Balloon.Shared.IMyFirstService))
-                {
-                    factory = ((global::MagicOnion.Client.MagicOnionClientFactoryDelegate<global::Balloon.Shared.IMyFirstService>)((x, y) => new Balloon.Shared.MyFirstServiceClient(x, y)));
-                }
                 if (typeof(T) == typeof(global::Balloon.Shared.Services.IAccountService))
                 {
                     factory = ((global::MagicOnion.Client.MagicOnionClientFactoryDelegate<global::Balloon.Shared.Services.IAccountService>)((x, y) => new Balloon.Shared.Services.AccountServiceClient(x, y)));
@@ -149,10 +145,9 @@ namespace MagicOnion.Resolvers
     
         static MagicOnionResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(2)
+            lookup = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(1)
             {
-                {typeof(global::MagicOnion.DynamicArgumentTuple<global::System.Int32, global::System.Int32>), 0 },
-                {typeof(global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>), 1 },
+                {typeof(global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>), 0 },
             };
         }
         internal static object GetFormatter(Type t)
@@ -165,8 +160,7 @@ namespace MagicOnion.Resolvers
         
             switch (key)
             {
-                case 0: return new global::MagicOnion.DynamicArgumentTupleFormatter<global::System.Int32, global::System.Int32>(default(global::System.Int32), default(global::System.Int32));
-                case 1: return new global::MagicOnion.DynamicArgumentTupleFormatter<global::System.String, global::System.String>(default(global::System.String), default(global::System.String));
+                case 0: return new global::MagicOnion.DynamicArgumentTupleFormatter<global::System.String, global::System.String>(default(global::System.String), default(global::System.String));
                 default: return null;
             }
         }
@@ -178,17 +172,15 @@ namespace MagicOnion.Resolvers
         [MagicOnion.Resolvers.Preserve]
         internal static void Register()
         {
+            _ = MagicOnionResolver.Instance.GetFormatter<global::Balloon.Shared.DataModels.UserViewModel>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::Balloon.Shared.MessagePacks.LoginResponse>();
-            _ = MagicOnionResolver.Instance.GetFormatter<global::Balloon.Shared.MessagePacks.SessionInfo>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::Balloon.Shared.MessagePacks.StartRequest>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::Balloon.Shared.MessagePacks.StartResponse>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::Balloon.Shared.MessagePacks.UpdateRequest>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::Balloon.Shared.MessagePacks.UpdateResponse>();
-            _ = MagicOnionResolver.Instance.GetFormatter<global::MagicOnion.DynamicArgumentTuple<global::System.Int32, global::System.Int32>>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::MessagePack.Nil>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::System.Boolean>();
-            _ = MagicOnionResolver.Instance.GetFormatter<global::System.Int32>();
             _ = MagicOnionResolver.Instance.GetFormatter<global::System.String>();
         }
     }
@@ -211,50 +203,6 @@ namespace MagicOnion.Resolvers
 #pragma warning disable 8618 // Non-nullable variable must contain a non-null value when exiting constructor. Consider declaring it as nullable.
 #pragma warning disable 8625 // Cannot convert null literal to non-nullable reference type.
 
-namespace Balloon.Shared
-{
-    using global::System;
-    using global::Grpc.Core;
-    using global::MagicOnion;
-    using global::MagicOnion.Client;
-    using global::MessagePack;
-    
-    [global::MagicOnion.Ignore]
-    public class MyFirstServiceClient : global::MagicOnion.Client.MagicOnionClientBase<global::Balloon.Shared.IMyFirstService>, global::Balloon.Shared.IMyFirstService
-    {
-        class ClientCore
-        {
-            public global::MagicOnion.Client.Internal.RawMethodInvoker<global::MagicOnion.DynamicArgumentTuple<global::System.Int32, global::System.Int32>, global::System.Int32> SumAsync;
-            public global::MagicOnion.Client.Internal.RawMethodInvoker<global::MessagePack.Nil, global::MessagePack.Nil> DoWorkAsync;
-            public ClientCore(global::MagicOnion.Serialization.IMagicOnionSerializerProvider serializerProvider)
-            {
-                this.SumAsync = global::MagicOnion.Client.Internal.RawMethodInvoker.Create_ValueType_ValueType<global::MagicOnion.DynamicArgumentTuple<global::System.Int32, global::System.Int32>, global::System.Int32>(global::Grpc.Core.MethodType.Unary, "IMyFirstService", "SumAsync", serializerProvider);
-                this.DoWorkAsync = global::MagicOnion.Client.Internal.RawMethodInvoker.Create_ValueType_ValueType<global::MessagePack.Nil, global::MessagePack.Nil>(global::Grpc.Core.MethodType.Unary, "IMyFirstService", "DoWorkAsync", serializerProvider);
-            }
-        }
-        
-        readonly ClientCore core;
-        
-        public MyFirstServiceClient(global::MagicOnion.Client.MagicOnionClientOptions options, global::MagicOnion.Serialization.IMagicOnionSerializerProvider serializerProvider) : base(options)
-        {
-            this.core = new ClientCore(serializerProvider);
-        }
-        
-        private MyFirstServiceClient(MagicOnionClientOptions options, ClientCore core) : base(options)
-        {
-            this.core = core;
-        }
-        
-        protected override global::MagicOnion.Client.MagicOnionClientBase<IMyFirstService> Clone(global::MagicOnion.Client.MagicOnionClientOptions options)
-            => new MyFirstServiceClient(options, core);
-        
-        public global::MagicOnion.UnaryResult<global::System.Int32> SumAsync(global::System.Int32 x, global::System.Int32 y)
-            => this.core.SumAsync.InvokeUnary(this, "IMyFirstService/SumAsync", new global::MagicOnion.DynamicArgumentTuple<global::System.Int32, global::System.Int32>(x, y));
-        public global::MagicOnion.UnaryResult DoWorkAsync()
-            => this.core.DoWorkAsync.InvokeUnaryNonGeneric(this, "IMyFirstService/DoWorkAsync", global::MessagePack.Nil.Default);
-    }
-}
-
 namespace Balloon.Shared.Services
 {
     using global::System;
@@ -269,12 +217,12 @@ namespace Balloon.Shared.Services
         class ClientCore
         {
             public global::MagicOnion.Client.Internal.RawMethodInvoker<global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>, global::Balloon.Shared.MessagePacks.LoginResponse> LoginAsync;
-            public global::MagicOnion.Client.Internal.RawMethodInvoker<global::MessagePack.Nil, global::Balloon.Shared.MessagePacks.SessionInfo> GetCurrentSessionInfo;
+            public global::MagicOnion.Client.Internal.RawMethodInvoker<global::MessagePack.Nil, global::Balloon.Shared.DataModels.UserViewModel> GetCurrentUser;
             public global::MagicOnion.Client.Internal.RawMethodInvoker<global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>, global::System.Boolean> Register;
             public ClientCore(global::MagicOnion.Serialization.IMagicOnionSerializerProvider serializerProvider)
             {
                 this.LoginAsync = global::MagicOnion.Client.Internal.RawMethodInvoker.Create_ValueType_RefType<global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>, global::Balloon.Shared.MessagePacks.LoginResponse>(global::Grpc.Core.MethodType.Unary, "IAccountService", "LoginAsync", serializerProvider);
-                this.GetCurrentSessionInfo = global::MagicOnion.Client.Internal.RawMethodInvoker.Create_ValueType_RefType<global::MessagePack.Nil, global::Balloon.Shared.MessagePacks.SessionInfo>(global::Grpc.Core.MethodType.Unary, "IAccountService", "GetCurrentSessionInfo", serializerProvider);
+                this.GetCurrentUser = global::MagicOnion.Client.Internal.RawMethodInvoker.Create_ValueType_RefType<global::MessagePack.Nil, global::Balloon.Shared.DataModels.UserViewModel>(global::Grpc.Core.MethodType.Unary, "IAccountService", "GetCurrentUser", serializerProvider);
                 this.Register = global::MagicOnion.Client.Internal.RawMethodInvoker.Create_ValueType_ValueType<global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>, global::System.Boolean>(global::Grpc.Core.MethodType.Unary, "IAccountService", "Register", serializerProvider);
             }
         }
@@ -296,8 +244,8 @@ namespace Balloon.Shared.Services
         
         public global::MagicOnion.UnaryResult<global::Balloon.Shared.MessagePacks.LoginResponse> LoginAsync(global::System.String username, global::System.String password)
             => this.core.LoginAsync.InvokeUnary(this, "IAccountService/LoginAsync", new global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>(username, password));
-        public global::MagicOnion.UnaryResult<global::Balloon.Shared.MessagePacks.SessionInfo> GetCurrentSessionInfo()
-            => this.core.GetCurrentSessionInfo.InvokeUnary(this, "IAccountService/GetCurrentSessionInfo", global::MessagePack.Nil.Default);
+        public global::MagicOnion.UnaryResult<global::Balloon.Shared.DataModels.UserViewModel> GetCurrentUser()
+            => this.core.GetCurrentUser.InvokeUnary(this, "IAccountService/GetCurrentUser", global::MessagePack.Nil.Default);
         public global::MagicOnion.UnaryResult<global::System.Boolean> Register(global::System.String username, global::System.String password)
             => this.core.Register.InvokeUnary(this, "IAccountService/Register", new global::MagicOnion.DynamicArgumentTuple<global::System.String, global::System.String>(username, password));
     }

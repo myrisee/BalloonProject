@@ -12,8 +12,8 @@ using MagicOnion.Client;
 using MagicOnion.Unity;
 using Reflex.Scripts.Attributes;
 using Services;
-using Services.Interfaces;
 using Spine.Unity;
+using UI;
 using UnityEngine;
 using Channel = Grpc.Core.Channel;
 
@@ -21,8 +21,8 @@ namespace Game
 {
     public class GameManager : MonoBehaviour
     {
-        public static Action<UserInfo> OnUserInfoUpdated;
-        public static Action<GameInfo> OnGameInfoUpdated;
+        public static Action<UserViewModel> OnUserInfoUpdated;
+        public static Action<GameViewModel> OnGameInfoUpdated;
         
         [Header("References")]
         public List<Balloon> balloons;
@@ -31,34 +31,25 @@ namespace Game
         public SkeletonAnimation shadow;
         public SkeletonAnimation background;
         public SkeletonGraphic buttonPipe;
+        
+        [Header("Credentials")]
+        [SerializeField] private string username;
+        [SerializeField] private string password;
 
-        [Header("GameService.Protocol")]
-        [SerializeField] private string token;
-        [SerializeField] private string userId;
+        [Header("Controls")]
+        [SerializeField] private bool needToStop;
 
-        public UserInfo UserInfo
+        public UserViewModel UserInfo
         {
             get => userInfo;
             set
             {
                 userInfo = value;
-                userId = userInfo.UserId;
                 OnUserInfoUpdated?.Invoke(userInfo);
             }
         }
 
-        public SessionInfo SessionInfo
-        {
-            get => sessionInfo;
-            set
-            {
-                sessionInfo = value;
-                UserInfo = sessionInfo.UserInfo;
-                token = sessionInfo.Token;
-            }
-        }
-
-        public GameInfo GameInfo
+        public GameViewModel GameInfo
         {
             get => gameInfo;
             set
@@ -69,15 +60,11 @@ namespace Game
                     OnGameInfoUpdated?.Invoke(gameInfo);
             }
         }
-
-        [SerializeField] private bool needToStop;
-        [SerializeField] private string currentTicketId;
         
         [Inject] private SoundManager soundManager;
-
-        private SessionInfo sessionInfo;
-        private UserInfo userInfo;
-        private GameInfo gameInfo;
+        
+        private UserViewModel userInfo;
+        private GameViewModel gameInfo;
         private Channel channel;
         private IAccountService accountService;
         private IGameService gameService;
@@ -98,25 +85,16 @@ namespace Game
         {
             channel = new Channel("localhost", 5000, ChannelCredentials.Insecure);
             
-            var signInId = "test";
-            var password = "1337";
-            
-            var authFilter = new WithAuthenticationFilter(signInId, password, channel);
+            var authFilter = new WithAuthenticationFilter(username, password, channel);
             
             accountService = MagicOnionClient.Create<IAccountService>(channel,new[] { authFilter});
-            var currentSessionInfo = await accountService.GetCurrentSessionInfo();
-            SessionInfo = currentSessionInfo;
-
             
+            var userInfo = await accountService.GetCurrentUser();
+            UserInfo = userInfo;
         }
 
         private void OnAuthenticationTokenUpdated()
         {
-            var signInId = "test";
-            var password = "1337";
-            
-            var authFilter = new WithAuthenticationFilter(signInId, password, channel);
-            
             var callOptions = new CallOptions().WithHeaders(new Metadata()
             {
                 { "Authorization", "Bearer " + AuthenticationTokenStorage.Token }
@@ -127,11 +105,11 @@ namespace Game
 
         private async void FixedUpdate()
         {
-            if(string.IsNullOrEmpty(currentTicketId) || GameInfo.GameStatus == GameStatus.Finish) 
+            if(GameInfo == null || GameInfo.GameState == GameState.Finish) 
                 return;
             
             var request = new UpdateRequest();
-            request.TicketId = this.currentTicketId;
+            request.TicketId = GameInfo.TicketId;
             request.NeedToStop = needToStop;
             
             var updateResponse = await gameService.UpdateGame(request);
@@ -141,23 +119,21 @@ namespace Game
         private void OnStart(StartResponse startModel)
         {
             needToStop = false;
-            currentTicketId = startModel.TicketId;
-            GameInfo = startModel.GameInfo;
-            UserInfo = startModel.UserInfo;
+            GameInfo = startModel.GameViewModel;
+            UserInfo = startModel.UserViewModel;
             
             StartAnimation();
         }
 
         private void OnUpdate(UpdateResponse updateResponse)
         {
-            GameInfo = updateResponse.GameInfo;
-            if (updateResponse.GameInfo.GameStatus == GameStatus.Update)
+            GameInfo = updateResponse.Game;
+            if (updateResponse.Game.GameState == GameState.Update)
             {
-                UserInfo = updateResponse.UserInfo;
-            }else if(updateResponse.GameInfo.GameStatus == GameStatus.Finish)
+                UserInfo = updateResponse.User;
+            }else if(updateResponse.Game.GameState == GameState.Finish)
             {
                 needToStop = false;
-                currentTicketId = string.Empty;
                 
                 OnFinish(updateResponse);
             }
@@ -165,25 +141,15 @@ namespace Game
         
         private void OnFinish(UpdateResponse finishModel)
         {
-            UserInfo = finishModel.UserInfo;
+            UserInfo = finishModel.User;
             StopAnimation(finishModel.IsWin);
         }
 
         private async void StartRequest()
         {
-            if(string.IsNullOrEmpty(this.token))
-                return;
-            
             var request = new StartRequest();
             request.BetAmount = 1;
             
-            
-            /*var callOptions = new CallOptions().WithHeaders(new Metadata()
-            {
-                { "Authorization", "Bearer " + AuthenticationTokenStorage.Token }
-            });
-            
-            var service = MagicOnionClient.Create<IGameService>(channel).WithOptions(callOptions);*/
             var startResponse = await gameService.StartGame(request);
             OnStart(startResponse);
         }

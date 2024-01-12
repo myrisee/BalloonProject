@@ -1,7 +1,9 @@
+using Balloon.Server.Database;
 using Balloon.Server.Services;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel(options =>
@@ -10,6 +12,12 @@ builder.WebHost.ConfigureKestrel(options =>
     {
         endpointOptions.Protocols = HttpProtocols.Http2;
     });
+});
+
+//var connectionString = builder.Configuration.GetConnectionString("DB");
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseSqlite(@"Data Source=D:\Github\BalloonProject\Balloon.Server\Balloon.Server.db");
 });
 
 builder.Services.AddGrpc();

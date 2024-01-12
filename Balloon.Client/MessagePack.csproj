@@ -53,8 +53,8 @@
      <Compile Include="Assets\Scripts\MessagePack\LZ4\LZ4Codec.Unsafe32.Dirty.cs" />
      <Compile Include="Assets\Scripts\MessagePack\MessagePackCode.cs" />
      <Compile Include="Assets\Scripts\MessagePack\Formatters\IMessagePackFormatter`1.cs" />
-     <Compile Include="Assets\Scripts\MessagePack\Resolvers\StandardResolver.cs" />
      <Compile Include="Assets\Scripts\MessagePack\ThisLibraryExtensionTypeCodes.cs" />
+     <Compile Include="Assets\Scripts\MessagePack\Resolvers\StandardResolver.cs" />
      <Compile Include="Assets\Scripts\MessagePack\Internal\AsymmetricKeyHashTable.cs" />
      <Compile Include="Assets\Scripts\MessagePack\Annotations\Attributes.cs" />
      <Compile Include="Assets\Scripts\MessagePack\Resolvers\TypelessObjectResolver.cs" />

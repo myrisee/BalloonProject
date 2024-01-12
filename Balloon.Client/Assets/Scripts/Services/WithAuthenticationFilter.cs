@@ -32,7 +32,16 @@ namespace Services
                 var authResult = await client.LoginAsync(_signInId, _password);
                 if (!authResult.Success)
                 {
-                    throw new Exception("Failed to sign-in on the server.");
+                    var response = await client.Register(_signInId, _password);
+                    if (response)
+                    {
+                        authResult = await client.LoginAsync(_signInId, _password);
+                    }
+                    else
+                    {
+                        Debug.LogError($"Failed to register user {_signInId}");
+                        return await next(context);
+                    }
                 }
                 Console.WriteLine($@"[WithAuthenticationFilter/IAccountService.Login] User authenticated as {authResult.UserId}");
 

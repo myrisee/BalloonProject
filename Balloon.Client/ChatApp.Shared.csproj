@@ -42,11 +42,11 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="D:\Github\BalloonProject\Balloon.Shared\MessagePacks\Responses.cs" />
-     <Compile Include="D:\Github\BalloonProject\Balloon.Shared\DataModels\GameInfo.cs" />
+     <Compile Include="D:\Github\BalloonProject\Balloon.Shared\DataModels\GameState.cs" />
      <Compile Include="D:\Github\BalloonProject\Balloon.Shared\MessagePacks\Requests.cs" />
+     <Compile Include="D:\Github\BalloonProject\Balloon.Shared\DataModels\GameViewModel.cs" />
      <Compile Include="D:\Github\BalloonProject\Balloon.Shared\Services\IGameService.cs" />
-     <Compile Include="D:\Github\BalloonProject\Balloon.Shared\DataModels\UserInfo.cs" />
-     <Compile Include="D:\Github\BalloonProject\Balloon.Shared\IMyFirstService.cs" />
+     <Compile Include="D:\Github\BalloonProject\Balloon.Shared\DataModels\UserViewModel.cs" />
      <Compile Include="D:\Github\BalloonProject\Balloon.Shared\Services\IAccountService.cs" />
      <None Include="D:\Github\BalloonProject\Balloon.Shared\package.json" />
      <None Include="D:\Github\BalloonProject\Balloon.Shared\obj\project.assets.json" />
