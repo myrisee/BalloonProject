@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using Balloon.Server.Database;
-using Balloon.Server.DTO;
+using Balloon.Server.DataModels;
 using Balloon.Server.Helpers;
 using Balloon.Shared.DataModels;
 using Balloon.Shared.MessagePacks;
@@ -35,7 +35,7 @@ public class GameService : ServiceBase<IGameService> , IGameService
         
         var userDto = await _databaseContext.Users.FirstOrDefaultAsync(x => x.Id == userGuid);
         
-        var gameDto = new GameDto(userGuid,request.BetAmount);
+        var gameDto = new GameDataModel(userGuid,request.BetAmount);
         
         var startResponse = new StartResponse();
 

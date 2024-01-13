@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Balloon.Shared.DataModels;
 
-namespace Balloon.Server.DTO;
+namespace Balloon.Server.DataModels;
 
-public class GameDto
+public class GameDataModel : IDataModel<GameViewModel>
 {
     [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid TicketId { get; set; }
@@ -15,7 +15,7 @@ public class GameDto
     public double BetAmount { get; set; }
     public double GameTime => (DateTime.Now - StartTime).TotalSeconds;
     
-    public GameDto(Guid userId, double betAmount)
+    public GameDataModel(Guid userId, double betAmount)
     {
         UserId = userId;
         GameState = 0;

@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Balloon.Shared.DataModels;
 
-namespace Balloon.Server.DTO;
+namespace Balloon.Server.DataModels;
 
-public class UserDto
+public class UserDataModel : IDataModel<UserViewModel>
 {
     [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
@@ -13,7 +13,7 @@ public class UserDto
     public string Currency { get; set; }
     public double Balance { get; set; }
     
-    public UserDto(string username,string password)
+    public UserDataModel(string username,string password)
     {
         Username = username;
         Password = password;

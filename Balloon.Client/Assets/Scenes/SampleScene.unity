@@ -1390,12 +1390,9 @@ MonoBehaviour:
   shadow: {fileID: 1593821973}
   background: {fileID: 847520255}
   buttonPipe: {fileID: 1898664383}
-  token: 
-  userId: 
   username: myrisee
   password: 123456
   needToStop: 0
-  currentTicketId: 
 --- !u!1 &1002618033
 GameObject:
   m_ObjectHideFlags: 0

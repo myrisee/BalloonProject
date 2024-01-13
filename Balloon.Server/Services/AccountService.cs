@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using Balloon.Server.Database;
-using Balloon.Server.DTO;
+using Balloon.Server.DataModels;
 using Balloon.Shared.DataModels;
 using Balloon.Shared.MessagePacks;
 using Balloon.Shared.Services;
@@ -63,10 +63,10 @@ public class AccountService : ServiceBase<IAccountService>, IAccountService
     [AllowAnonymous]
     public async UnaryResult<bool> Register(string username, string password)
     {
-        var user = new UserDto(username, password);
+        var user = new UserDataModel(username, password);
         var result = _databaseContext.Users.Add(user);
         await _databaseContext.SaveChangesAsync();
-        return result.State == EntityState.Added;
+        return result.IsKeySet;
     }
     
     public async UnaryResult<UserViewModel> GetCurrentUser()
@@ -75,14 +75,7 @@ public class AccountService : ServiceBase<IAccountService>, IAccountService
         var userIdGuid = Guid.Parse(userId.Value);
         
         var userDto = await _databaseContext.Users.FirstOrDefaultAsync(x => x.Id == userIdGuid);
-        var userViewModel = new UserViewModel()
-        {
-            Id = userDto.Id,
-            Username = userDto.Username,
-            Currency = userDto.Currency,
-            Balance = userDto.Balance
-        };
 
-        return userViewModel;
+        return userDto.ToViewModel();
     }
 }
