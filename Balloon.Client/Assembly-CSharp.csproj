@@ -49,9 +49,9 @@
      <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Game\Balloon.cs" />
      <Compile Include="Assets\Scripts\Services\WithAuthenticationFilter.cs" />
-     <Compile Include="Assets\Scripts\SceneInstaller.cs" />
+     <Compile Include="Assets\Scripts\Installers\SceneInstaller.cs" />
      <Compile Include="Assets\Scripts\InitialSettings.cs" />
-     <Compile Include="Assets\Scripts\ProjectInstaller.cs" />
+     <Compile Include="Assets\Scripts\Installers\ProjectInstaller.cs" />
      <Compile Include="Assets\Scripts\Game\GameManager.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\Images\Spine\Balloon\5\Levan.json" />
@@ -74,6 +74,7 @@
      <Folder Include="Assets\Images\Spine\Detonate\1" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Images\Spine\Balloon\3\Levan.atlas.txt" />
+     <Folder Include="Assets\Scripts\Installers" />
      <None Include="Assets\Images\Spine\Button\gilaki.json" />
      <Folder Include="Assets\Images\Spine\Background" />
      <Folder Include="Assets\Scripts\Sound" />
