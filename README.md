@@ -18,4 +18,5 @@ This project aims to replicate gameplay of [Casino Balloon game](https://www.sma
 
 Its compatible with Rider 2023.2.1
 
+![Video](https://streamable.com/es2ge4)
 ![Screenshot_1](https://github.com/myrisee/BalloonProject/assets/9747463/1f6edef2-b2cd-4019-991e-3b236a8ff3cc)
