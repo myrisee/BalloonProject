@@ -1,5 +1,5 @@
 # About
-This project aims to replicate gameplay of Casino Balloon game with simple backend and unity client.
+This project aims to replicate gameplay of [Casino Balloon game](https://www.smartsoftgaming.com/games/balloon) with simple backend and unity client.
 
 - Balloon.Server
     - Asp.Net Core
